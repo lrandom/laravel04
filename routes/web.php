@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,54 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/profile',[UserController::class,'profile']);
+Route::get('/change-password',[UserController::class,'changePassword']);
+Route::get('/update-profile',[UserController::class,'updateProfile'])->name('user.update-profile');
 
-Route::get('/lien-he-voi-chung-toi', function () {
-    return view('about');
-});
-
-Route::get('/tin-tuc', function () {
-    echo "Bạn đã vào phần tin tức";
-    return view('about');
-});
-
-/*Route::get('/admin/user', function () {
-    echo "Đây là trang qly user";
-});
-Route::get('/admin/post', function () {
-    echo "Đây là trang qly post";
-});*/
-
-Route::prefix('/admin')->group(function () {
-    Route::get('/user', function () {
-
-    });
-    Route::get('/post', function () {
-
-    });
-});
-
-Route::get('/posts/{id}/{name}', function ($id, $name) {
-    echo $id;
-    echo $name;
-})->name('post.id.name');
-
-
-Route::get('/profile', function () {
-    $names = [
-        'Nguyễn Văn A',
-        'Nguyễn Văn B',
-    ];
-    $age = 20;
-    return view('user.profile', compact('names', 'age'));
-});
-
-Route::get('/demo', function () {
-    $names = [
-        'Nguyễn Văn A',
-        'Nguyễn Văn B',
-    ];
-    return view('demo',compact('names'));
+Route::get('/home', function () {
+    return view('home');
 });

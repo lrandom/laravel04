@@ -5,24 +5,13 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>@yield('title','Trang chủ')</title>
 </head>
 <body>
-@for($i=0;$i<10;$i++)
-    <p>{{$i}}</p>
-@endfor
-
-<?php $count = 0; ?>
-@while($count<10)
-    <p>{{$count}}</p>
-    <?php  $count++; ?>
-@endwhile
-
-@foreach($names as $name)
-    <p>{{$name}}</p>
-@endforeach
-
-@include('user.profile')
-@includeIf('user.profile')
+<nav>Menu chính</nav>
+@section('content')
+    <h1>Trang chủ</h1>
+@show
+<nav>Footer</nav>
 </body>
 </html>
