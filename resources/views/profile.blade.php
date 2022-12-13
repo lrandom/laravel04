@@ -3,6 +3,7 @@
   Profile
 @endsection
 @section('content')
+    <script src="{{asset('js/main.js')}}"></script>
 @if($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -12,6 +13,7 @@
         </ul>
     </div>
 @endif
+
 <form action="{{route('user.update-profile')}}">
     @csrf
     <input type="text" name="full_name" value="{{old('full_name')}}"/><br>
@@ -35,6 +37,7 @@
     <div>
         {{$message}}
     </div>
+
     @enderror
 
     <button>Submit</button>
