@@ -62,7 +62,7 @@ class PostController extends Controller implements ICrud
     {
         // TODO: Implement delete() method.
         Post::where('id', $id)->delete();
+        Post::orderBy('created_at', 'desc')->limit(12)->get();
         return redirect()->back()->with('success', 'Xóa thành công');
     }
-
 }

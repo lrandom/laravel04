@@ -14,4 +14,14 @@ class Post extends Model
         'content',
         'category_id'
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'tag_posts', 'post_id', 'tag_id');
+    }
 }

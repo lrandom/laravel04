@@ -16,9 +16,10 @@ class PostFactory extends Factory
         return [
             'title' => $this->faker->sentence(),
             'content' => $this->faker->paragraph(),
-            'keyword' => $this->faker->words(5, true),
-            'user_id' => $this->faker->numberBetween(1, 10),
-            'path'=> $this->faker->imageUrl(640, 480, 'cats', true, 'Faker'),
+            'category_id' => $this->faker->numberBetween(1, 3),
+            //'keyword' => $this->faker->words(5, true),
+            //'user_id' => $this->faker->numberBetween(1, 10),
+            //'path'=> $this->faker->imageUrl(640, 480, 'cats', true, 'Faker'),
         ];
     }
 }

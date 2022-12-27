@@ -18,3 +18,49 @@ use App\Models\Post;
 
 require_once __DIR__ . '/be.php';
 
+Route::get('/pagination', function (\Illuminate\Http\Request $request) {
+    if ($request->q) {
+        $posts = Post::where('title', 'like', '%' . $request->q . '%')->paginate(5);
+    } else {
+        $posts = Post::paginate(5);
+    }
+    $posts->appends(['q' => $request->q]);
+    return view('pagination', ['posts' => $posts]);
+});
+
+Route::get('/user', function () {
+    $user = \App\Models\User::find(3);
+    echo $user->extra_infos->extra_address;
+    echo $user->extra_infos->extra_phone;
+});
+
+
+Route::get('/extra-infos', function () {
+    $extraInfos = \App\Models\ExtraInfo::all();
+    foreach ($extraInfos as $extraInfo) {
+        echo $extraInfo->user->name;
+        echo $extraInfo->user->email;
+    }
+});
+
+
+Route::get('/category', function () {
+    $categories = \App\Models\Category::all();
+    return view('category', ['categories' => $categories]);
+});
+
+Route::get('/one-post', function () {
+    $post = \App\Models\Post::find(1);
+    echo $post->title . " thuộc danh mục " . $post->category->name;
+});
+
+
+Route::get('/tags', function () {
+    $tags = \App\Models\Tag::all();
+    return view('tags', ['tags' => $tags]);
+});
+
+Route::get('/posts', function () {
+    $tags = \App\Models\Post::all();
+    return view('posts', ['posts' => $tags]);
+});
