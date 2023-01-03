@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\ExtraInfo;
+use App\Models\Image;
 use App\Models\Post;
+use App\Models\Product;
 use App\Models\Tag;
 use App\Models\TagPost;
 use Database\Factories\PostFactory;
@@ -24,7 +26,9 @@ class DatabaseSeeder extends Seeder
         /*   $this->call([
                UserSeeder::class
            ]);*/
-        Tag::factory(5)->create();
-        TagPost::factory(5)->create();
+        //Tag::factory(5)->create();
+        //TagPost::factory(5)->create();
+        Product::factory(20)->create();
+        //Image::factory(10)->create();
     }
 }

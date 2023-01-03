@@ -64,3 +64,9 @@ Route::get('/posts', function () {
     $tags = \App\Models\Post::all();
     return view('posts', ['posts' => $tags]);
 });
+
+Route::get('/demo-morph-1-1', function () {
+    $posts = \App\Models\Post::all();
+    $products = \App\Models\Product::all();
+    return view('demo-morph-1-1', ['posts' => $posts,'products'=>$products]);
+});
