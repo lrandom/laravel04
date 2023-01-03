@@ -20,13 +20,19 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function tags()
-    {
-        return $this->belongsToMany(Tag::class, 'tag_posts', 'post_id', 'tag_id');
-    }
+//    public function tags()
+//    {
+//        return $this->belongsToMany(Tag::class, 'tag_posts', 'post_id', 'tag_id');
+//    }
 
     public function images()
     {
         return $this->morphMany(Image::class, 'imageable');
     }
+
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class, 'tagable');
+    }
+
 }

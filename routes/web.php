@@ -70,3 +70,9 @@ Route::get('/demo-morph-1-1', function () {
     $products = \App\Models\Product::all();
     return view('demo-morph-1-1', ['posts' => $posts,'products'=>$products]);
 });
+
+Route::get('/tagable', function () {
+    $posts = \App\Models\Post::all();
+    $products = \App\Models\Product::all();
+    return view('tagable',compact('posts','products'));
+});

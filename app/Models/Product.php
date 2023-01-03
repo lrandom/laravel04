@@ -13,4 +13,9 @@ class Product extends Model
     {
         return $this->morphMany(Image::class, 'imageable');
     }
+
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class, 'tagable');
+    }
 }
