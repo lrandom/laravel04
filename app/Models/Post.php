@@ -25,8 +25,8 @@ class Post extends Model
         return $this->belongsToMany(Tag::class, 'tag_posts', 'post_id', 'tag_id');
     }
 
-    public function image()
+    public function images()
     {
-        return $this->morphOne(Image::class, 'imageable');
+        return $this->morphMany(Image::class, 'imageable');
     }
 }

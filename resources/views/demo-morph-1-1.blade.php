@@ -10,8 +10,10 @@
 <body>
 @foreach($posts as $post)
     <div>
-        @if($post->image)
-            <img src="{{$post->image->path}}" alt="">
+        @if($post->images)
+            @foreach($post->images as $image)
+                <img src="{{$image->path}}" alt="">
+            @endforeach
         @endif
         <h4>{{$post->title}}</h4>
         <p>{{$post->content}}</p>
@@ -20,8 +22,10 @@
 
 @foreach($products as $product)
     <div>
-        @if($product->image)
-            <img src="{{$product->image->path}}" alt="">
+        @if($product->images)
+            @foreach($product->images as $image)
+                <img src="{{$image->path}}" alt="">
+            @endforeach
         @endif
         <h4>{{$product->name}}</h4>
         <p>{{$product->content}}</p>
