@@ -68,11 +68,92 @@ Route::get('/posts', function () {
 Route::get('/demo-morph-1-1', function () {
     $posts = \App\Models\Post::all();
     $products = \App\Models\Product::all();
-    return view('demo-morph-1-1', ['posts' => $posts,'products'=>$products]);
+    return view('demo-morph-1-1', ['posts' => $posts, 'products' => $products]);
 });
 
 Route::get('/tagable', function () {
     $posts = \App\Models\Post::all();
     $products = \App\Models\Product::all();
-    return view('tagable',compact('posts','products'));
+    return view('tagable', compact('posts', 'products'));
 });
+
+Route::get('/demo-each', function () {
+    /*$myCollect = collect([
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+    ]);
+
+    $myCollect->each(function ($item, $key) {
+        echo $item;
+    });
+
+    $myCollect->map(function ($item, $key) {
+        return $item * 2;
+    })->each(function ($item, $key) {
+        echo $item;
+    });
+
+    $myCollect = collect([
+        [
+            'name' => 'Nguyen Van A',
+        ],
+        [
+            'name' => 'Nguyen Van B',
+        ],
+        [
+            'name' => 'Nguyen Van C',
+        ],
+    ]);
+
+    $myCollect->pluck('name')->each(function ($item, $key) {
+        echo $item;
+    });*/
+
+    /*$myCollect = collect([
+        [
+            'name' => 'Nguyen Van A',
+            'age' => '30'
+        ], [
+            'name' => 'Nguyen Van B',
+            'age' => '40'
+        ]
+    ]);
+
+    $myCollect = $myCollect->pluck('name', 'age');
+    dd($myCollect->all());
+
+    $collection = collect([
+        ['product_id' => 'prod-100', 'name' => 'Desk'],
+        ['product_id' => 'prod-200', 'name' => 'Chair'],
+    ]);
+
+    $plucked = $collection->pluck('name', 'product_id');
+
+    dd($plucked->all());*/
+
+    //$myCollect = collect([1, 2, 3, 4, 5, 6, 6]);
+    /*   $myCollect = $myCollect->filter(function ($item, $index) {
+           return $item > 3;
+       });*/
+    /*$total = $myCollect->reduce(function ($carry, $item) {
+        return $carry + $item;
+    }, 0);
+    dd($total);
+    dd(3948394 + 92829382 + 938394834);*/
+    /*$myCollect = collect([
+        [
+            'name' => 'Nguyen Van A',
+            'age' => '30'
+        ], [
+            'name' => 'Nguyen Van B',
+            'age' => '40'
+        ]
+    ])->flatten();
+    dd($myCollect->all());*/
+    \Illuminate\Support\Collection::macro('myEach', function ($callback) {
+        foreach ($this->items as $key => $item) {
+            $callback($item, $key);
+        }
+    });
+});
+
+
