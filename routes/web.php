@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\DB;
 use App\Models\Post;
+use App\Http\Controllers\FileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +13,7 @@ use App\Models\Post;
 |
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
+
 | contains the "web" middleware group. Now create something great!
 |
 */
@@ -156,4 +158,28 @@ Route::get('/demo-each', function () {
     });
 });
 
+Route::get('/upload-file', [FileController::class, 'uploadUI']);
+Route::post('/do-upload', [FileController::class, 'upload'])->name('do-upload');
+Route::get('/gallery', [\App\Http\Controllers\GalleryController::class, 'gallery'])->name('gallery.get');
+Route::post('/gallery', [\App\Http\Controllers\GalleryController::class, 'gallery'])->name('gallery.post');
+Route::get('/alert-browser', function () {
+    return view('alert-browser');
+})->name('alert-browser');
 
+Route::get('/demo-middleware', function () {
+    echo 'demo-middleware';
+})->middleware(\App\Http\Middleware\AllowBrowserChrome::class);
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__ . '/auth.php';
+
+Route::get('auth-user', function () {
+    if(\Illuminate\Support\Facades\Auth::check()) {
+        dd(\Illuminate\Support\Facades\Auth::user()->email);
+    }else{
+        echo "Bạn chưa đăng nhập";
+    }
+});

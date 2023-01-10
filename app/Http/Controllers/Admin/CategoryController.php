@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller implements ICrud
 {
@@ -26,6 +27,9 @@ class CategoryController extends Controller implements ICrud
     public function doCreate(Request $request)
     {
         // TODO: Implement doAdd() method.
+        Storage::disk('public')->move($request->file('image')
+            ->store('images'),
+            'images/' . $request->file('image')->getClientOriginalName());
         $data = $request->all();
         unset($data['_token']);
         try {
