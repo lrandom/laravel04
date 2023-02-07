@@ -177,9 +177,17 @@ Route::get('/dashboard', function () {
 require __DIR__ . '/auth.php';
 
 Route::get('auth-user', function () {
-    if(\Illuminate\Support\Facades\Auth::check()) {
+    if (\Illuminate\Support\Facades\Auth::check()) {
         dd(\Illuminate\Support\Facades\Auth::user()->email);
-    }else{
+    } else {
         echo "Bạn chưa đăng nhập";
     }
 });
+
+
+Route::get('my-login', [\App\Http\Controllers\AuthController::class, 'login',
+])->name('my-login');
+Route::post('my-login', [\App\Http\Controllers\AuthController::class, 'doLogin',
+])->name('my-login.post');
+Route::get('my-profile', [\App\Http\Controllers\AuthController::class, 'profile',
+])->name('my-profile');
