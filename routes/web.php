@@ -18,7 +18,7 @@ use App\Http\Controllers\FileController;
 |
 */
 
-require_once __DIR__ . '/be.php';
+/*require_once __DIR__ . '/be.php';
 
 Route::get('/pagination', function (\Illuminate\Http\Request $request) {
     if ($request->q) {
@@ -77,87 +77,87 @@ Route::get('/tagable', function () {
     $posts = \App\Models\Post::all();
     $products = \App\Models\Product::all();
     return view('tagable', compact('posts', 'products'));
+});*/
+
+//Route::get('/demo-each', function () {
+/*$myCollect = collect([
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+]);
+
+$myCollect->each(function ($item, $key) {
+    echo $item;
 });
 
-Route::get('/demo-each', function () {
-    /*$myCollect = collect([
-        0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-    ]);
-
-    $myCollect->each(function ($item, $key) {
-        echo $item;
-    });
-
-    $myCollect->map(function ($item, $key) {
-        return $item * 2;
-    })->each(function ($item, $key) {
-        echo $item;
-    });
-
-    $myCollect = collect([
-        [
-            'name' => 'Nguyen Van A',
-        ],
-        [
-            'name' => 'Nguyen Van B',
-        ],
-        [
-            'name' => 'Nguyen Van C',
-        ],
-    ]);
-
-    $myCollect->pluck('name')->each(function ($item, $key) {
-        echo $item;
-    });*/
-
-    /*$myCollect = collect([
-        [
-            'name' => 'Nguyen Van A',
-            'age' => '30'
-        ], [
-            'name' => 'Nguyen Van B',
-            'age' => '40'
-        ]
-    ]);
-
-    $myCollect = $myCollect->pluck('name', 'age');
-    dd($myCollect->all());
-
-    $collection = collect([
-        ['product_id' => 'prod-100', 'name' => 'Desk'],
-        ['product_id' => 'prod-200', 'name' => 'Chair'],
-    ]);
-
-    $plucked = $collection->pluck('name', 'product_id');
-
-    dd($plucked->all());*/
-
-    //$myCollect = collect([1, 2, 3, 4, 5, 6, 6]);
-    /*   $myCollect = $myCollect->filter(function ($item, $index) {
-           return $item > 3;
-       });*/
-    /*$total = $myCollect->reduce(function ($carry, $item) {
-        return $carry + $item;
-    }, 0);
-    dd($total);
-    dd(3948394 + 92829382 + 938394834);*/
-    /*$myCollect = collect([
-        [
-            'name' => 'Nguyen Van A',
-            'age' => '30'
-        ], [
-            'name' => 'Nguyen Van B',
-            'age' => '40'
-        ]
-    ])->flatten();
-    dd($myCollect->all());*/
-    \Illuminate\Support\Collection::macro('myEach', function ($callback) {
-        foreach ($this->items as $key => $item) {
-            $callback($item, $key);
-        }
-    });
+$myCollect->map(function ($item, $key) {
+    return $item * 2;
+})->each(function ($item, $key) {
+    echo $item;
 });
 
+$myCollect = collect([
+    [
+        'name' => 'Nguyen Van A',
+    ],
+    [
+        'name' => 'Nguyen Van B',
+    ],
+    [
+        'name' => 'Nguyen Van C',
+    ],
+]);
+
+$myCollect->pluck('name')->each(function ($item, $key) {
+    echo $item;
+});*/
+
+/*$myCollect = collect([
+    [
+        'name' => 'Nguyen Van A',
+        'age' => '30'
+    ], [
+        'name' => 'Nguyen Van B',
+        'age' => '40'
+    ]
+]);
+
+$myCollect = $myCollect->pluck('name', 'age');
+dd($myCollect->all());
+
+$collection = collect([
+    ['product_id' => 'prod-100', 'name' => 'Desk'],
+    ['product_id' => 'prod-200', 'name' => 'Chair'],
+]);
+
+$plucked = $collection->pluck('name', 'product_id');
+
+dd($plucked->all());*/
+
+//$myCollect = collect([1, 2, 3, 4, 5, 6, 6]);
+/*   $myCollect = $myCollect->filter(function ($item, $index) {
+       return $item > 3;
+   });*/
+/*$total = $myCollect->reduce(function ($carry, $item) {
+    return $carry + $item;
+}, 0);
+dd($total);
+dd(3948394 + 92829382 + 938394834);*/
+/*$myCollect = collect([
+    [
+        'name' => 'Nguyen Van A',
+        'age' => '30'
+    ], [
+        'name' => 'Nguyen Van B',
+        'age' => '40'
+    ]
+])->flatten();
+dd($myCollect->all());*/
+//    \Illuminate\Support\Collection::macro('myEach', function ($callback) {
+//        foreach ($this->items as $key => $item) {
+//            $callback($item, $key);
+//        }
+//    });
+//});
+/*
 Route::get('/upload-file', [FileController::class, 'uploadUI']);
 Route::post('/do-upload', [FileController::class, 'upload'])->name('do-upload');
 Route::get('/gallery', [\App\Http\Controllers\GalleryController::class, 'gallery'])->name('gallery.get');
@@ -191,3 +191,11 @@ Route::post('my-login', [\App\Http\Controllers\AuthController::class, 'doLogin',
 ])->name('my-login.post');
 Route::get('my-profile', [\App\Http\Controllers\AuthController::class, 'profile',
 ])->name('my-profile');
+
+Route::get('get-session',[\App\Http\Controllers\SessionDemoController::class,'getSession'])
+    ->name('get-session');
+Route::get('set-session',[\App\Http\Controllers\SessionDemoController::class,'setSession'])
+    ->name('set-session');*/
+
+
+require __DIR__ . '/fe.php';
