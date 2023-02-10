@@ -199,3 +199,5 @@ Route::get('set-session',[\App\Http\Controllers\SessionDemoController::class,'se
 
 
 require __DIR__ . '/fe.php';
+
+Route::get('/admin/order', [\App\Http\Controllers\Admin\OrderController::class,'listOrder']);
