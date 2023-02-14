@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\DB;
 use App\Models\Post;
 use App\Http\Controllers\FileController;
+use App\Mail\ConfirmOrder;
 
 /*
 |--------------------------------------------------------------------------
@@ -200,4 +201,16 @@ Route::get('set-session',[\App\Http\Controllers\SessionDemoController::class,'se
 
 require __DIR__ . '/fe.php';
 
-Route::get('/admin/order', [\App\Http\Controllers\Admin\OrderController::class,'listOrder']);
+Route::get('/admin/order', [\App\Http\Controllers\Admin\OrderController::class, 'listOrder']);
+Route::get('/send-mail', function () {
+    $orderId = "001";
+    \Illuminate\Support\Facades\Mail::to('beginlive@gmail.com')
+        ->cc('mmochicken92@gmail.com')
+        ->send(new \App\Mail\OrderSuccess());
+});
+
+Route::get('/run-job', function () {
+    for ($i = 0; $i < 100; $i++) {
+        dispatch(new \App\Jobs\SendMailOrder());
+    }
+});
